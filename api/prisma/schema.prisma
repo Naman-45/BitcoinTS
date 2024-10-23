@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  password String
+  accounts Account[]
+}
+
+model Account {
+  id               Int           @default(autoincrement())
+  derivationPath   String        @unique
+  publicKey        String        @id @unique
+  utxos            uTXO[]
+  balance          Float         @default(0) // Track the account balance
+  transactionsFrom Transaction[] @relation("FromAccount") // Link to transactions sent from this account
+  transactionsTo   Transaction[] @relation("ToAccount") // Link to transactions received by this account
+  userId           Int
+  user             User          @relation(fields: [userId], references: [id])
+}
+
+model uTXO {
+  id      Int     @id @default(autoincrement())
+  amount  Float
+  isSpent Boolean @default(false)
+  ownerId String
+  owner   Account @relation(fields: [ownerId], references: [publicKey])
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  fromAccount Int
+  toAccount   Int
+  amount      Float
+  status      String // e.g., 'pending', 'successful', 'failed'
+  timestamp   DateTime @default(now())
+  from        Account  @relation("FromAccount", fields: [fromAccount], references: [id])
+  to          Account  @relation("ToAccount", fields: [toAccount], references: [id])
+}

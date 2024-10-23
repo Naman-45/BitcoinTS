@@ -1,0 +1,21 @@
+{
+  "name": "miner-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc -b && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bitcoinerlab/secp256k1": "^1.1.1",
+    "@types/ws": "^8.5.12",
+    "bitcoinjs-lib": "^7.0.0-rc.0",
+    "crypto": "^1.0.1",
+    "ecpair": "^3.0.0-rc.0",
+    "ethers": "^6.13.2",
+    "ws": "^8.18.0"
+  }
+}
