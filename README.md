@@ -1,4 +1,4 @@
-Create a simple Bitcoin like server that has the following components - 
+## Bitcoin like server that has the following components - 
 
 1. Central server - A central websocket server that all miners connect to to exchange messages
 2. Miner server - 
@@ -11,9 +11,6 @@ Create a simple Bitcoin like server that has the following components -
  - Lets the user sign a txn, send it over to one of the miner servers
 
 
-Tech stack - Preferably Node.js/Golang for the servers
+Tech stack - Node.js
 
 
-## Bounties
-1. Simple Servers without UTXOs (in memory balances) - $200
-2. UTXOs for ins and outs - $200 (for point 1) + $200
