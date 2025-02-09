@@ -1,4 +1,8 @@
-## Bitcoin like server that has the following components - 
+## BitcoinTS - 
+
+# Bitcoin system design implementation 
+
+![System design architecture](https://res.cloudinary.com/dxyexbgt6/image/upload/v1739131989/Untitled-2024-07-24-2243_1_cpy4wm.png)
 
 1. Central server - A central websocket server that all miners connect to to exchange messages
 2. Miner server - 
@@ -10,7 +14,5 @@
  - Lets the user create a BTC wallet
  - Lets the user sign a txn, send it over to one of the miner servers
 
-
-Tech stack - Node.js
 
 
